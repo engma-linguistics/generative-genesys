@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "rpgsessions-gpt4"
+version = "0.1.0"
+description = ""
+authors = ["Daniel Bishop <daniel@engmalinguistics.com>"]
+readme = "README.md"
+packages = [{include = "rpgsessions_gpt4"}]
+
+[tool.poetry.dependencies]
+python = "^3.8.1"
+openai = "^0.27.7"
+langchain = "^0.0.177"
+
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.23.2"
+black = "^23.3.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
