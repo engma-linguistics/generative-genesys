@@ -1,0 +1,842 @@
+{
+    "_id": "6490f16218fddf53570e62dd",
+    "createdDate": "2023-06-20T00:22:58.926Z",
+    "modifiedDate": "2023-06-20T04:47:50.334Z",
+    "status": 1,
+    "name": "Pie Goblin",
+    "lookupName": "pie goblin",
+    "image": "https://unbound-legends.imgix.net/character2/genesys-T-jjr.jpg?auto=format",
+    "notes": "",
+    "privateNotes": "",
+    "rulesSystem": "[rules] nds",
+    "characterType": "[character type] npc",
+    "configuration": {
+        "diceTheme": "[dice theme] genesys",
+        "gameTheme": "[game theme] genesys terrinoth",
+        "ndsCharacterType": "[nds character type] rival",
+        "talentsDisplayType": "[nds character talent display type] list group",
+        "talentsSignatureAbilitiesEnabled": false,
+        "forcePowersDisplayType": "[nds character talent display type] list group",
+        "dutyEnabled": false,
+        "forceEnabled": false,
+        "forceDiceEnabled": false,
+        "moralityEnabled": false,
+        "obligationEnabled": false,
+        "superCharacteristicsEnabled": false,
+        "heroicAbilitiesEnabled": false,
+        "aemberEnabled": false,
+        "favorsEnabled": false,
+        "agendasEnabled": false,
+        "automations": false
+    },
+    "userFavorite": false,
+    "clonedCount": 0,
+    "clonedFromCharacterId": null,
+    "importData": {
+        "imported": true,
+        "importDate": "2023-06-20T00:22:58.928Z",
+        "importSource": "[import source] genesys emporium"
+    },
+    "options": {
+        "allowGMControl": false
+    },
+    "tempClone": false,
+    "userId": "5f347ccfba8e0a0012a6cdc9",
+    "armor": [],
+    "attributes": [
+        {
+            "value": 5,
+            "type": "[nds character attribute] soak"
+        },
+        {
+            "value": 0,
+            "type": "[nds character attribute] wounds current"
+        },
+        {
+            "value": 6,
+            "type": "[nds character attribute] adversary level"
+        },
+        {
+            "value": 0,
+            "type": "[nds character attribute] combat power level"
+        }
+    ],
+    "characteristics": [
+        {
+            "value": 2,
+            "superCharacteristic": false,
+            "type": "[nds character characteristic] brawn"
+        },
+        {
+            "value": 3,
+            "superCharacteristic": false,
+            "type": "[nds character characteristic] agility"
+        },
+        {
+            "value": 2,
+            "superCharacteristic": false,
+            "type": "[nds character characteristic] intellect"
+        },
+        {
+            "value": 3,
+            "superCharacteristic": false,
+            "type": "[nds character characteristic] cunning"
+        },
+        {
+            "value": 1,
+            "superCharacteristic": false,
+            "type": "[nds character characteristic] willpower"
+        },
+        {
+            "value": 1,
+            "superCharacteristic": false,
+            "type": "[nds character characteristic] presence"
+        }
+    ],
+    "crits": [],
+    "details": [],
+    "duty": {
+        "contributionRanks": 0,
+        "duties": []
+    },
+    "equipment": [],
+    "favors": [],
+    "forcePowers": {
+        "talents": [],
+        "trees": [],
+        "listGroups": []
+    },
+    "heroicAbilities": [],
+    "modifiers": [],
+    "morality": {
+        "score": 0,
+        "sessionScore": 0,
+        "moralities": []
+    },
+    "obligation": {
+        "obligations": []
+    },
+    "skills": [
+        {
+            "id": "78c528d5-1482-469d-b0b5-f665d1144b79",
+            "name": "Æmbercraft",
+            "lookupName": "mbercraft-6485",
+            "isCareer": false,
+            "ranks": 0,
+            "skillType": "[nds character skill type] general",
+            "extraDice": [],
+            "linkedCharacteristic": "[nds character characteristic] willpower"
+        },
+        {
+            "id": "f29884d7-50ce-4486-8a2f-afc104251d29",
+            "name": "Alchemy",
+            "lookupName": "alchemy-2514",
+            "isCareer": false,
+            "ranks": 0,
+            "skillType": "[nds character skill type] general",
+            "extraDice": [],
+            "linkedCharacteristic": "[nds character characteristic] intellect"
+        },
+        {
+            "id": "9f943e32-1801-41b2-8958-461d162fbcf1",
+            "name": "Knowledge Culture",
+            "lookupName": "knowledge-culture-7113",
+            "isCareer": false,
+            "ranks": 0,
+            "skillType": "[nds character skill type] knowledge",
+            "extraDice": [],
+            "linkedCharacteristic": "[nds character characteristic] intellect"
+        }
+    ],
+    "talents": {
+        "talents": [
+            {
+                "id": "9ec4d180-d59e-4a79-8625-36a31f82442b",
+                "name": "Duelist",
+                "purchased": true,
+                "activationType": "[nds character activation type] passive",
+                "description": "See CRB, page 73, for more details.",
+                "modifiers": [],
+                "ranked": false,
+                "ranks": 0,
+                "isForceTalent": false,
+                "isConflictTalent": false,
+                "xpCost": 0
+            }
+        ],
+        "trees": [],
+        "listGroups": [
+            {
+                "id": "c8cd67da-0672-4267-a6df-f1c7a38135c6",
+                "name": "Talents",
+                "talentIds": [
+                    "8037cdb7-fc81-45e8-991a-37a86853773e"
+                ]
+            },
+            {
+                "id": "63d2598a-aa2e-4047-992d-4b6620b3639b",
+                "name": "Abilities",
+                "talentIds": []
+            }
+        ],
+        "pyramidPositionManager": {
+            "_nodesByLinkedId": {},
+            "_nodeRefsFlattened": [
+                {
+                    "id": "cd9b3376-3a2f-4485-aa2f-49b92a10874e",
+                    "position": {
+                        "x": 0,
+                        "y": 0
+                    },
+                    "span": 1,
+                    "linkedId": "",
+                    "hidden": false
+                },
+                {
+                    "id": "0d165bf7-9db1-4d3c-8e9b-7a62d02caabb",
+                    "position": {
+                        "x": 1,
+                        "y": 0
+                    },
+                    "span": 1,
+                    "linkedId": "",
+                    "hidden": true
+                },
+                {
+                    "id": "fe1fe1ea-758a-4166-9e93-a0c6384577fc",
+                    "position": {
+                        "x": 2,
+                        "y": 0
+                    },
+                    "span": 1,
+                    "linkedId": "",
+                    "hidden": true
+                },
+                {
+                    "id": "3152e258-52ca-42b3-92eb-3176f17edcd0",
+                    "position": {
+                        "x": 3,
+                        "y": 0
+                    },
+                    "span": 1,
+                    "linkedId": "",
+                    "hidden": true
+                },
+                {
+                    "id": "255028c8-2670-4755-b31f-f8fd86e42bcb",
+                    "position": {
+                        "x": 4,
+                        "y": 0
+                    },
+                    "span": 1,
+                    "linkedId": "",
+                    "hidden": true
+                },
+                {
+                    "id": "109b22a5-fff5-426c-88f2-bf4418e3a2e5",
+                    "position": {
+                        "x": 0,
+                        "y": 1
+                    },
+                    "span": 1,
+                    "linkedId": "",
+                    "hidden": false
+                },
+                {
+                    "id": "d69b1650-9998-440d-95a6-93cc79822064",
+                    "position": {
+                        "x": 1,
+                        "y": 1
+                    },
+                    "span": 1,
+                    "linkedId": "",
+                    "hidden": false
+                },
+                {
+                    "id": "e39ea657-b1f0-4a25-a9d3-8d5b88d8a50a",
+                    "position": {
+                        "x": 2,
+                        "y": 1
+                    },
+                    "span": 1,
+                    "linkedId": "",
+                    "hidden": true
+                },
+                {
+                    "id": "a870aea4-de55-48f3-949a-d2fe704e2389",
+                    "position": {
+                        "x": 3,
+                        "y": 1
+                    },
+                    "span": 1,
+                    "linkedId": "",
+                    "hidden": true
+                },
+                {
+                    "id": "85bbbacf-7692-48e2-8d75-1e287ee4c2c6",
+                    "position": {
+                        "x": 4,
+                        "y": 1
+                    },
+                    "span": 1,
+                    "linkedId": "",
+                    "hidden": true
+                },
+                {
+                    "id": "1062e09b-339c-4669-8377-7515b92d3229",
+                    "position": {
+                        "x": 0,
+                        "y": 2
+                    },
+                    "span": 1,
+                    "linkedId": "",
+                    "hidden": false
+                },
+                {
+                    "id": "69690440-235d-4d18-b4b9-177740f64ca7",
+                    "position": {
+                        "x": 1,
+                        "y": 2
+                    },
+                    "span": 1,
+                    "linkedId": "",
+                    "hidden": false
+                },
+                {
+                    "id": "e781b232-ebf1-426d-bafa-f291ff1e2b0a",
+                    "position": {
+                        "x": 2,
+                        "y": 2
+                    },
+                    "span": 1,
+                    "linkedId": "",
+                    "hidden": false
+                },
+                {
+                    "id": "0964074f-641b-4cbe-953f-d7907a3e4dca",
+                    "position": {
+                        "x": 3,
+                        "y": 2
+                    },
+                    "span": 1,
+                    "linkedId": "",
+                    "hidden": true
+                },
+                {
+                    "id": "a43255e1-eaf1-487a-b2f7-32c2c9f3b0f3",
+                    "position": {
+                        "x": 4,
+                        "y": 2
+                    },
+                    "span": 1,
+                    "linkedId": "",
+                    "hidden": true
+                },
+                {
+                    "id": "08737bbb-16e1-4951-9a07-3a490bf55e0f",
+                    "position": {
+                        "x": 0,
+                        "y": 3
+                    },
+                    "span": 1,
+                    "linkedId": "",
+                    "hidden": false
+                },
+                {
+                    "id": "37b731ef-eb92-4e0b-b3f9-29c64c1e70d2",
+                    "position": {
+                        "x": 1,
+                        "y": 3
+                    },
+                    "span": 1,
+                    "linkedId": "",
+                    "hidden": false
+                },
+                {
+                    "id": "96cb52ac-e4c1-4f72-984b-4cf17b1bcfbc",
+                    "position": {
+                        "x": 2,
+                        "y": 3
+                    },
+                    "span": 1,
+                    "linkedId": "",
+                    "hidden": false
+                },
+                {
+                    "id": "5b3e33e1-5927-43b2-aeb5-93776e7acae2",
+                    "position": {
+                        "x": 3,
+                        "y": 3
+                    },
+                    "span": 1,
+                    "linkedId": "",
+                    "hidden": false
+                },
+                {
+                    "id": "d53a6ec1-64f3-4f36-b68a-1d83b8de4a6b",
+                    "position": {
+                        "x": 4,
+                        "y": 3
+                    },
+                    "span": 1,
+                    "linkedId": "",
+                    "hidden": true
+                },
+                {
+                    "id": "f0c27a5e-e7b4-4381-bae0-0ba235ce5fba",
+                    "position": {
+                        "x": 0,
+                        "y": 4
+                    },
+                    "span": 1,
+                    "linkedId": "",
+                    "hidden": false
+                },
+                {
+                    "id": "f1141f44-528e-4ed8-b984-9548efdd4a4f",
+                    "position": {
+                        "x": 1,
+                        "y": 4
+                    },
+                    "span": 1,
+                    "linkedId": "",
+                    "hidden": false
+                },
+                {
+                    "id": "c2613109-ec62-49c6-a0ac-b15d36742546",
+                    "position": {
+                        "x": 2,
+                        "y": 4
+                    },
+                    "span": 1,
+                    "linkedId": "",
+                    "hidden": false
+                },
+                {
+                    "id": "d4d6cee4-d59b-456c-9e39-e1aa8bc6b3e2",
+                    "position": {
+                        "x": 3,
+                        "y": 4
+                    },
+                    "span": 1,
+                    "linkedId": "",
+                    "hidden": false
+                },
+                {
+                    "id": "1f20d149-5c46-48ea-b549-be9f87849a64",
+                    "position": {
+                        "x": 4,
+                        "y": 4
+                    },
+                    "span": 1,
+                    "linkedId": "",
+                    "hidden": false
+                }
+            ],
+            "_nodeRefs": [
+                [
+                    {
+                        "id": "cd9b3376-3a2f-4485-aa2f-49b92a10874e",
+                        "position": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "span": 1,
+                        "linkedId": "",
+                        "hidden": false
+                    },
+                    {
+                        "id": "0d165bf7-9db1-4d3c-8e9b-7a62d02caabb",
+                        "position": {
+                            "x": 1,
+                            "y": 0
+                        },
+                        "span": 1,
+                        "linkedId": "",
+                        "hidden": true
+                    },
+                    {
+                        "id": "fe1fe1ea-758a-4166-9e93-a0c6384577fc",
+                        "position": {
+                            "x": 2,
+                            "y": 0
+                        },
+                        "span": 1,
+                        "linkedId": "",
+                        "hidden": true
+                    },
+                    {
+                        "id": "3152e258-52ca-42b3-92eb-3176f17edcd0",
+                        "position": {
+                            "x": 3,
+                            "y": 0
+                        },
+                        "span": 1,
+                        "linkedId": "",
+                        "hidden": true
+                    },
+                    {
+                        "id": "255028c8-2670-4755-b31f-f8fd86e42bcb",
+                        "position": {
+                            "x": 4,
+                            "y": 0
+                        },
+                        "span": 1,
+                        "linkedId": "",
+                        "hidden": true
+                    }
+                ],
+                [
+                    {
+                        "id": "109b22a5-fff5-426c-88f2-bf4418e3a2e5",
+                        "position": {
+                            "x": 0,
+                            "y": 1
+                        },
+                        "span": 1,
+                        "linkedId": "",
+                        "hidden": false
+                    },
+                    {
+                        "id": "d69b1650-9998-440d-95a6-93cc79822064",
+                        "position": {
+                            "x": 1,
+                            "y": 1
+                        },
+                        "span": 1,
+                        "linkedId": "",
+                        "hidden": false
+                    },
+                    {
+                        "id": "e39ea657-b1f0-4a25-a9d3-8d5b88d8a50a",
+                        "position": {
+                            "x": 2,
+                            "y": 1
+                        },
+                        "span": 1,
+                        "linkedId": "",
+                        "hidden": true
+                    },
+                    {
+                        "id": "a870aea4-de55-48f3-949a-d2fe704e2389",
+                        "position": {
+                            "x": 3,
+                            "y": 1
+                        },
+                        "span": 1,
+                        "linkedId": "",
+                        "hidden": true
+                    },
+                    {
+                        "id": "85bbbacf-7692-48e2-8d75-1e287ee4c2c6",
+                        "position": {
+                            "x": 4,
+                            "y": 1
+                        },
+                        "span": 1,
+                        "linkedId": "",
+                        "hidden": true
+                    }
+                ],
+                [
+                    {
+                        "id": "1062e09b-339c-4669-8377-7515b92d3229",
+                        "position": {
+                            "x": 0,
+                            "y": 2
+                        },
+                        "span": 1,
+                        "linkedId": "",
+                        "hidden": false
+                    },
+                    {
+                        "id": "69690440-235d-4d18-b4b9-177740f64ca7",
+                        "position": {
+                            "x": 1,
+                            "y": 2
+                        },
+                        "span": 1,
+                        "linkedId": "",
+                        "hidden": false
+                    },
+                    {
+                        "id": "e781b232-ebf1-426d-bafa-f291ff1e2b0a",
+                        "position": {
+                            "x": 2,
+                            "y": 2
+                        },
+                        "span": 1,
+                        "linkedId": "",
+                        "hidden": false
+                    },
+                    {
+                        "id": "0964074f-641b-4cbe-953f-d7907a3e4dca",
+                        "position": {
+                            "x": 3,
+                            "y": 2
+                        },
+                        "span": 1,
+                        "linkedId": "",
+                        "hidden": true
+                    },
+                    {
+                        "id": "a43255e1-eaf1-487a-b2f7-32c2c9f3b0f3",
+                        "position": {
+                            "x": 4,
+                            "y": 2
+                        },
+                        "span": 1,
+                        "linkedId": "",
+                        "hidden": true
+                    }
+                ],
+                [
+                    {
+                        "id": "08737bbb-16e1-4951-9a07-3a490bf55e0f",
+                        "position": {
+                            "x": 0,
+                            "y": 3
+                        },
+                        "span": 1,
+                        "linkedId": "",
+                        "hidden": false
+                    },
+                    {
+                        "id": "37b731ef-eb92-4e0b-b3f9-29c64c1e70d2",
+                        "position": {
+                            "x": 1,
+                            "y": 3
+                        },
+                        "span": 1,
+                        "linkedId": "",
+                        "hidden": false
+                    },
+                    {
+                        "id": "96cb52ac-e4c1-4f72-984b-4cf17b1bcfbc",
+                        "position": {
+                            "x": 2,
+                            "y": 3
+                        },
+                        "span": 1,
+                        "linkedId": "",
+                        "hidden": false
+                    },
+                    {
+                        "id": "5b3e33e1-5927-43b2-aeb5-93776e7acae2",
+                        "position": {
+                            "x": 3,
+                            "y": 3
+                        },
+                        "span": 1,
+                        "linkedId": "",
+                        "hidden": false
+                    },
+                    {
+                        "id": "d53a6ec1-64f3-4f36-b68a-1d83b8de4a6b",
+                        "position": {
+                            "x": 4,
+                            "y": 3
+                        },
+                        "span": 1,
+                        "linkedId": "",
+                        "hidden": true
+                    }
+                ],
+                [
+                    {
+                        "id": "f0c27a5e-e7b4-4381-bae0-0ba235ce5fba",
+                        "position": {
+                            "x": 0,
+                            "y": 4
+                        },
+                        "span": 1,
+                        "linkedId": "",
+                        "hidden": false
+                    },
+                    {
+                        "id": "f1141f44-528e-4ed8-b984-9548efdd4a4f",
+                        "position": {
+                            "x": 1,
+                            "y": 4
+                        },
+                        "span": 1,
+                        "linkedId": "",
+                        "hidden": false
+                    },
+                    {
+                        "id": "c2613109-ec62-49c6-a0ac-b15d36742546",
+                        "position": {
+                            "x": 2,
+                            "y": 4
+                        },
+                        "span": 1,
+                        "linkedId": "",
+                        "hidden": false
+                    },
+                    {
+                        "id": "d4d6cee4-d59b-456c-9e39-e1aa8bc6b3e2",
+                        "position": {
+                            "x": 3,
+                            "y": 4
+                        },
+                        "span": 1,
+                        "linkedId": "",
+                        "hidden": false
+                    },
+                    {
+                        "id": "1f20d149-5c46-48ea-b549-be9f87849a64",
+                        "position": {
+                            "x": 4,
+                            "y": 4
+                        },
+                        "span": 1,
+                        "linkedId": "",
+                        "hidden": false
+                    }
+                ]
+            ],
+            "width": 5,
+            "height": 5,
+            "nodes": [
+                {
+                    "id": "0d165bf7-9db1-4d3c-8e9b-7a62d02caabb",
+                    "position": {
+                        "x": 1,
+                        "y": 0
+                    },
+                    "span": 1,
+                    "linkedId": "",
+                    "hidden": true
+                },
+                {
+                    "id": "fe1fe1ea-758a-4166-9e93-a0c6384577fc",
+                    "position": {
+                        "x": 2,
+                        "y": 0
+                    },
+                    "span": 1,
+                    "linkedId": "",
+                    "hidden": true
+                },
+                {
+                    "id": "3152e258-52ca-42b3-92eb-3176f17edcd0",
+                    "position": {
+                        "x": 3,
+                        "y": 0
+                    },
+                    "span": 1,
+                    "linkedId": "",
+                    "hidden": true
+                },
+                {
+                    "id": "255028c8-2670-4755-b31f-f8fd86e42bcb",
+                    "position": {
+                        "x": 4,
+                        "y": 0
+                    },
+                    "span": 1,
+                    "linkedId": "",
+                    "hidden": true
+                },
+                {
+                    "id": "e39ea657-b1f0-4a25-a9d3-8d5b88d8a50a",
+                    "position": {
+                        "x": 2,
+                        "y": 1
+                    },
+                    "span": 1,
+                    "linkedId": "",
+                    "hidden": true
+                },
+                {
+                    "id": "a870aea4-de55-48f3-949a-d2fe704e2389",
+                    "position": {
+                        "x": 3,
+                        "y": 1
+                    },
+                    "span": 1,
+                    "linkedId": "",
+                    "hidden": true
+                },
+                {
+                    "id": "85bbbacf-7692-48e2-8d75-1e287ee4c2c6",
+                    "position": {
+                        "x": 4,
+                        "y": 1
+                    },
+                    "span": 1,
+                    "linkedId": "",
+                    "hidden": true
+                },
+                {
+                    "id": "0964074f-641b-4cbe-953f-d7907a3e4dca",
+                    "position": {
+                        "x": 3,
+                        "y": 2
+                    },
+                    "span": 1,
+                    "linkedId": "",
+                    "hidden": true
+                },
+                {
+                    "id": "a43255e1-eaf1-487a-b2f7-32c2c9f3b0f3",
+                    "position": {
+                        "x": 4,
+                        "y": 2
+                    },
+                    "span": 1,
+                    "linkedId": "",
+                    "hidden": true
+                },
+                {
+                    "id": "d53a6ec1-64f3-4f36-b68a-1d83b8de4a6b",
+                    "position": {
+                        "x": 4,
+                        "y": 3
+                    },
+                    "span": 1,
+                    "linkedId": "",
+                    "hidden": true
+                }
+            ],
+            "_highestX": 4,
+            "_highestY": 3
+        }
+    },
+    "weapons": [
+        {
+            "id": "c06a700f-55b2-4347-bfd3-be37cb4637cd",
+            "name": "Pie Satchel",
+            "lookupName": "pie-satchel-8871",
+            "linkedSkillId": "1056d4ea-99b1-44ef-b7b9-206dcfd6113f",
+            "baseDamage": 2,
+            "damageAddsBrawn": true,
+            "critRating": 5,
+            "range": "[nds character range band] short",
+            "encumbrance": 2,
+            "carrying": true,
+            "hardPoints": 0,
+            "rarity": 0,
+            "restricted": false,
+            "cost": "0",
+            "equipped": true,
+            "modifiers": [
+                {
+                    "id": "387dd976-8565-4ae7-a7a5-12f4fa090b68",
+                    "type": "[nds character modifier type] narrative",
+                    "name": "LimitedAmmo",
+                    "description": "5"
+                },
+                {
+                    "id": "e59a824e-bd37-46d7-81a3-6d9c234e4eef",
+                    "type": "[nds character modifier type] narrative",
+                    "name": "StunDamage",
+                    "description": ""
+                }
+            ],
+            "attachments": [],
+            "extraDice": [],
+            "description": ""
+        }
+    ]
+}
