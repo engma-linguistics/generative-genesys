@@ -33,6 +33,7 @@
     ],
     "characters": [
         {
+            "adversaryLevel": "1",
             "name": "Pie Goblin",
             "careerSkillsRank": [
                 "Stealth",
@@ -77,6 +78,14 @@
                     "carried": true,
                     "id": "superPieLauncher",
                     "equipped": true
+                }
+            },
+            "masterTalents": {
+                "1": {
+                    "1": "Duelist"
+                },
+                "2": {
+                    "1": "Adversary"
                 }
             }
         }
