@@ -2,7 +2,7 @@ import ast
 import json
 from src.utils import generate_id
 
-REQUIRED_CHARACTER_FIELDS = ["name", "careerSkillsRank", "masterSkills", "creationCharacteristics"]
+REQUIRED_CHARACTER_FIELDS = ["name", "careerSkillsRank", "masterSkills", "creationCharacteristics", "creatureType", "adversaryLevel", "minionCount", "combatCR", "socialCR", "generalCR", "woundThreshold", "strainThreshold", "soak", "defenseMelee", "defenseRanged"]
 REQUIRED_WEAPON_FIELDS = ["name", "encumbrance", "setting", "damage", "range", "skill", "critical", "modifier", "qualities"]
 
 def validate_creature(generated_data):
@@ -22,7 +22,7 @@ def validate_creature(generated_data):
             print("warning, missing field: ", k)
             passes_all_validation_steps = False
     if passes_all_validation_steps:
-        print("passes all validation steps")
+        print("passes all creature validation steps")
     generated_data_as_dict["archetype"] = "Npc"
     generated_data_as_dict["career"] = "NpcCareer"
     generated_data_as_dict["theme"] = "ROT"
@@ -48,7 +48,7 @@ def validate_weapon(generated_data):
                 print("warning, missing field: ", k)
                 passes_all_validation_steps = False
         if passes_all_validation_steps:
-            print("passes all validation steps")
+            print("passes all weapon validation steps")
         
         each_weapon["id"] = generate_id()
     
@@ -57,8 +57,7 @@ def validate_weapon(generated_data):
 
 
 
-def finalization(generated_data_as_dict, image_link=None):
-    final_dict["characters"] = [generated_data_as_dict]
+def finalization(final_dict, image_link=None):
     if image_link:
         final_dict["characters"][0]["description"] = {"image": image_link}
     with open("creature.json", "w") as f:

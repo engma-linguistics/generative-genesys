@@ -5,6 +5,9 @@ import re
 import openai
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
+SUPABASE_API_KEY = os.getenv("SUPABASE_API_KEY")
+RPGSESSIONS_EMAIL=os.getenv("RPGSESSIONS_EMAIL")
+RPGSESSIONS_PASSWORD=os.getenv("RPGSESSIONS_PASSWORD")
 
 
 ALL_ADVERSARIES = []

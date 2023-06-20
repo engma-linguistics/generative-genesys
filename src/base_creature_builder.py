@@ -49,7 +49,10 @@ CHARACTER_TEMPLATE_STRING = """
         },
         "RangedLight": { # note that the skill is called 'Ranged (Light)'; for any skill with spaces or special characters, remove them
             "careerRank": 2
-    }
+    },
+    "creatureType": "Rival", # can be Minion, Rival, or Nemesis
+    "adversaryLevel": 0, # Minions always get zero, Rivals usually 0-1, Nemeses usually 2-5; 5 is reserved for the most powerful of Nemeses like Darth Vader levels of bad and scary, 2-3 is normal for these challenging enemies
+    "minionCount": 3, # only used for Minions and 3 is a good default; ONLY 0 for Rival and Nemesis enemies.
     "creationCharacteristics": {
         "Brawn": 2,
         "Agility": 3,
@@ -57,7 +60,15 @@ CHARACTER_TEMPLATE_STRING = """
         "Cunning": 3,
         "Willpower": 2,
         "Presence": 1
-    }
+    },
+    "combatCR": 2, # see instructions for reasonable values
+    "socialCR": 2, # see instructions for reasonable values
+    "generalCR": 2, # see instructions for reasonable values
+    "woundThreshold": 10, # wound threshold for Minions is generally 2-6, Rivals are 8-15, Nemeses are 12-40
+    "strainThreshold": 10, # strain threshold for Minions is 0, Rivals are 8-15. Nemeses are 12-25
+    "soak": 2, # soak for Minions is 0-3, Rivals are 2-6, Nemeses are 4-10, though anything over 6 is rare and a defensive powerhouse
+    "defenseMelee": 0, # defense for Minions is 0-1, Rivals are 0-3, Nemeses are 0-5
+    "defenseRanged": 0, # defense for Minions is 0-1, Rivals are 0-3, Nemeses are 0-5
 }"""
 
 
@@ -145,7 +156,7 @@ def creature_template_builder(
         )
         creature_template += skills_template
     if allow_other_skills:
-        creature_template += " Feel free to add other skills as you see fit.\n\n"
+        creature_template += " Feel free to add other skills as you see fit. Minions usually have around 1-3 skills, Rivals 2-6, and Nemeses 4-9.\n\n"
     else:
         creature_template += " Do not add any other skills.\n\n"
 
