@@ -39,6 +39,7 @@ def get_character(character_id, bearer_token):
     response = session.get(url, headers=headers)
     return response.json()
 
+
 def upload_new_character(bearer_token, creature_json_path="creature.json"):
     url = "https://api.rpgsessions.com/import/emporium"
     headers = {
@@ -46,15 +47,15 @@ def upload_new_character(bearer_token, creature_json_path="creature.json"):
     }
 
     # Open the JSON file in binary mode
-    with open(creature_json_path, 'rb') as f:
+    with open(creature_json_path, "rb") as f:
         # Create a dictionary that will be sent as the files parameter
-        files = {'file': (creature_json_path, f)}
+        files = {"file": (creature_json_path, f)}
 
         # Make the request
         response = session.post(url, headers=headers, files=files)
 
     print(response.json())
-    character_id = response.json()[0]['id']
+    character_id = response.json()[0]["id"]
     return character_id
 
 
@@ -67,7 +68,6 @@ def put_character(character_id, bearer_token, data):
     )
     response = session.put(url=url, headers=headers, json=data)
     return response
-
 
 
 def get_bearer_token():
@@ -83,8 +83,8 @@ def get_bearer_token():
         "gotrue_meta_security": {},
     }
     response = session.post(url=url, headers=headers, json=data)
-    access_token = response.json()['access_token']
+    access_token = response.json()["access_token"]
     url = "https://api.rpgsessions.com/auth2/fromSupabase"
-    response = session.post(url=url, json={"accessToken":access_token})
-    bearer_token = response.json()['token']
+    response = session.post(url=url, json={"accessToken": access_token})
+    bearer_token = response.json()["token"]
     return bearer_token

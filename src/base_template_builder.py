@@ -1,75 +1,14 @@
-CREATURE_TEMPLATE_DICT = {
-    "customArchetypes": [
-        {
-            "name": "NPC Archetype",
-            "Brawn": 1,
-            "Agility": 1,
-            "Intellect": 1,
-            "Cunning": 1,
-            "Willpower": 1,
-            "Presence": 1,
-            "woundThreshold": 5,
-            "strainThreshold": 1,
-            "experience": "1",
-            "description": "",
-            "setting": ["All"],
-            "skills": {},
-            "talents": [],
-            "id": "ByO058vfgGB33EOrabeE",
-        }
-    ],
-    "customCareers": [
-        {
-            "name": "NPC Career",
-            "description": "",
-            "setting": ["All"],
-            "skills": [],
-            "id": "9VWOCKS9chsyHcBjS1U3",
-        }
-    ],
-}
-CHARACTER_TEMPLATE_STRING = """
-{
-    "name": "Pie Goblin",
-    "careerSkillsRank": [ # these are the skills that are career skills for this character; note these are just examples
-        "Stealth",
-        "Athletics",
-        "KnowledgeForbidden" # note the skill is called Knowledge Forbidden; for any skill with spaces or special characters, remove them
-    ],
-    "masterSkills": { # for Rivals and Nemeses, specify what skills are at what rank; only use skills from careerSkillsRank
-        "Stealth": {
-            "careerRank": 1
-        },
-        "Deception": {
-            "careerRank": 3
-        },
-        "RangedLight": { # note that the skill is called 'Ranged (Light)'; for any skill with spaces or special characters, remove them
-            "careerRank": 2
-    },
-    "creatureType": "Rival", # can be Minion, Rival, or Nemesis
-    "adversaryLevel": 0, # Minions always get zero, Rivals usually 0-1, Nemeses usually 2-5; 5 is reserved for the most powerful of Nemeses like Darth Vader levels of bad and scary, 2-3 is normal for these challenging enemies
-    "minionCount": 3, # only used for Minions and 3 is a good default; ONLY 0 for Rival and Nemesis enemies.
-    "creationCharacteristics": {
-        "Brawn": 2,
-        "Agility": 3,
-        "Intellect": 2,
-        "Cunning": 3,
-        "Willpower": 2,
-        "Presence": 1
-    },
-    "combatCR": 2, # 0-17; Minions are 1-4, Rivals are 2-8, Nemeses are 7-17
-    "socialCR": 2, # 0-17; Minions are 1-3, Rivals are 2-6, Nemeses are 5-17
-    "generalCR": 2, # 0-17; Minions are 1-3, Rivals are 2-7, Nemeses are 6-16
-    "woundThreshold": 10, # wound threshold for Minions is generally 2-6, Rivals are 8-15, Nemeses are 12-40
-    "strainThreshold": 10, # strain threshold for Minions is 0, Rivals are 8-15. Nemeses are 12-25
-    "soak": 2, # soak for Minions is 0-3, Rivals are 2-6, Nemeses are 4-10, though anything over 6 is rare and a defensive powerhouse
-    "defenseMelee": 0, # defense for Minions is 0-1, Rivals are 0-3, Nemeses are 0-5
-    "defenseRanged": 0, # defense for Minions is 0-1, Rivals are 0-3, Nemeses are 0-5
-}"""
+class BaseTemplate():
+    def __init__():
+        # inits are all the shared-across-all fields
 
 
-# need abilities, weapons, derived
-def creature_template_builder(
+class CreatureTemplate(BaseTemplate):
+    def __init__(self):
+        super().__init__()
+        # creature-specific inits
+
+def base_template_builder(
     creature_description="A goblin that throws pies at people.",
     creature_name="Pie Goblin",
     creature_type="Rival",
@@ -155,6 +94,11 @@ def creature_template_builder(
         creature_template += " Feel free to add other skills as you see fit. Minions usually have around 1-3 skills, Rivals 2-6, and Nemeses 4-9.\n\n"
     else:
         creature_template += " Do not add any other skills.\n\n"
+
+    #silhouette_template = """It is Silhouette {silhouette} in size. Silhouette 1 is significantly smaller than a person, like a dog or smaller, 2 is around a person's size, 3 is roughly horse-sized, 4 is going to be most dragons or large vehicles, and 5+ usually isn't used for creatures that aren't impossibly large. 10, the largest silhouette, is the size of a moon.\n\n""".format(
+    #    silhouette=silhouette
+    #)
+    #template += silhouette_template
 
     if combat_cr != -1 or social_cr != -1 or general_cr != -1:
         cr_template = """It has the following CRs (for your use only, do not include them in the JSON!): """

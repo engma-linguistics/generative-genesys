@@ -17,24 +17,23 @@ skills_list = [
     "Ranged",
     "Ranged-Heavy",
     "Ranged-Light",
-    "Knowledge"
+    "Knowledge",
 ]
 
-new_skill_template = {"customSkills": [
+new_skill_template = {
+    "customSkills": [
         {
-            "setting": [
-                "All"
-            ],
+            "setting": ["All"],
             "name": "Knowledge Education",
             "type": "Knowledge",
             "characteristic": "Intellect",
-            "id": "lfbVQTJbZbo5b07IMUrk"
+            "id": "lfbVQTJbZbo5b07IMUrk",
         }
     ],
 }
 
+
 def skills_checker(generated_skills):
     for generated_skill in generated_skills:
         if generated_skill not in skills_list:
-            
             return False

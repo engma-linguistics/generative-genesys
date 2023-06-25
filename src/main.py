@@ -2,19 +2,25 @@ from src import openai
 import os
 import json
 import re
+import uuid
 from src.base_creature_builder import creature_template_builder
-from src.validator import validate_creature, finalization
 from src.weapons_builder import weapon_template_builder
+from src.abilities_builder import ability_template_builder
 from src.utils import fill_template_with_openai, generate_id, upload_new_character, get_character, put_character, get_bearer_token
 from src.base_creature_builder import CREATURE_TEMPLATE_DICT
-from src.validator import validate_weapon
+from src.validator import validate_creature, validate_weapon, validate_talent_or_ability
 import logging
 logger = logging.getLogger(__name__)
 # set logger level to info
 logger.setLevel(logging.INFO)
+#openai.api_key = os.getenv("OPENAI_API_KEY")
 
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
+class NPCBuilder:
+    def __init__():
+        pass
+    
+
 
 
 def complete_builder(
@@ -37,14 +43,16 @@ def complete_builder(
     presence=-1,
     number_of_weapons=2,
     number_of_abilities=-1,
+    bearer_token = None,
 ):
     final_creature_dict = CREATURE_TEMPLATE_DICT
-    print("Getting bearer token")
-    try:
-        bearer_token = get_bearer_token()
-    except Exception as e:
-        logger.error(e)
-        raise e
+    if not bearer_token:
+        print("Getting bearer token")
+        try:
+            bearer_token = get_bearer_token()
+        except Exception as e:
+            logger.error(e)
+            raise e
 
     print("Building creature template")
     creature_builder_string = creature_template_builder(
@@ -67,7 +75,7 @@ def complete_builder(
         presence=presence,
     )
 
-    print("Filling character template with OpenAI, expect this to take about 30 seconds.")
+    print("Filling character template with OpenAI, expect this to take about 15 seconds.")
     generated_character_data = fill_template_with_openai(creature_builder_string)
     print("Validating character data")
     generated_character_data_as_dict = validate_creature(generated_character_data)
@@ -84,7 +92,7 @@ def complete_builder(
         combat_cr=generated_character_data_as_dict['combatCR'],
         number_of_weapons=number_of_weapons)
 
-    print("Filling weapon template with OpenAI, expect this to take about 30 seconds.")
+    print("Filling weapon template with OpenAI, expect this to take about 15 seconds.")
     generated_weapon_data = fill_template_with_openai(weapon_builder_string)
     print("Validating weapon data")
     generated_weapon_data_as_dict = validate_weapon(generated_weapon_data)
@@ -100,17 +108,33 @@ def complete_builder(
                         "id": new_name,
                         "equipped": True}
 
-    # TODO: Add abilities
-    # abilities_string = abilities_template_builder(
-    #     creature_name=creature_name,
-    #     creature_description=creature_description,
-    #     creature_type=creature_type,
-    #     setting_description=setting_description,
-    #     creature_skills=creature_skills,
-    #     combat_cr=combat_cr,
-    #     social_cr=social_cr,
-    #     general_cr=general_cr,
-    #     number_of_abilities=number_of_abilities,
+    abilities_list_id = uuid.uuid4()
+    talents_list_id = uuid.uuid4()
+    talents_and_abilities_list = {'listGroups': [{'id': abilities_list_id, # I think i just need this if at all for the edit of the live character?
+    'name': 'Abilities',
+    'talentIds': []},
+   {'id': talents_list_id,
+    'name': 'Talents',
+    'talentIds': []}]}
+
+    print("Building abilities template")
+    ability_template_string = ability_template_builder(creature_name, creature_type, ["Melee", "Intimidation", "Knowledge (Forbidden)"], 7, 6, 5, setting_description, number_of_abilities=number_of_abilities)
+    print("Filling ability template with OpenAI, expect this to take about 15 seconds.")
+    generated_ability_data = fill_template_with_openai(ability_template_string)
+    print("Validating ability data")
+    generated_ability_data_as_dict = validate_talent_or_ability(generated_ability_data)
+    final_creature_dict["customTalents"] = generated_ability_data_as_dict
+    print("Adding abilities to character")
+    master_talents = {}
+    for ability in generated_ability_data_as_dict:
+        talents_and_abilities_list["listGroups"][0]["talentIds"].append(ability["id"])
+        new_name = ability['name'].replace(' ', '').replace("'", '').replace("-", "")  # Remove spaces and apostrophes and dashes
+        if ability["tier"] not in master_talents.keys():
+            master_talents[ability["tier"]] = {"1":new_name}
+        else:
+            master_talents[ability["tier"]].extend({str(len(master_talents[ability["tier"]])+1): new_name})
+        final_creature_dict["characters"][0]["masterTalents"] = master_talents  
+
 
     # TODO: Add gear generator
 
@@ -192,10 +216,46 @@ def complete_builder(
         {"value": 0, "type": "[nds character attribute] available aember"},
         {"value": 0, "type": "[nds character attribute] total aember"},
     ]
+    
+    # data["talents"] = {
+    #     "talents": [
+    #         {
+    #             "id": "9ec4d180-d59e-4a79-8625-36a31f82442b",
+    #             "name": "Duelist",
+    #             "purchased": true,
+    #             "activationType": "[nds character activation type] passive",
+    #             "description": "See CRB, page 73, for more details.",
+    #             "modifiers": [],
+    #             "ranked": false,
+    #             "ranks": 0,
+    #             "isForceTalent": false,
+    #             "isConflictTalent": false,
+    #             "xpCost": 0
+    #         }
+    #     ],
+    #     "trees": [],
+    #     "listGroups": [
+    #         {
+    #             "id": "c8cd67da-0672-4267-a6df-f1c7a38135c6",
+    #             "name": "Talents",
+    #             "talentIds": [
+    #                 "8037cdb7-fc81-45e8-991a-37a86853773e"
+    #             ]
+    #         },
+    #         {
+    #             "id": "63d2598a-aa2e-4047-992d-4b6620b3639b",
+    #             "name": "Abilities",
+    #             "talentIds": []
+    #         }
+    #     ],
+    # }
+    
+    #data["listGroups"] = talents_and_abilities_list
 
     # update the character!
     # TODO: Add and remove skills in data as desired
     print("Re-uploading character data to RPGSessions, overwriting existing character we just made")
-    put_character(character_id, bearer_token, data)
+    #put_character(character_id, bearer_token, data)
 
     print("Done!")
+    return final_creature_dict
