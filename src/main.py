@@ -6,6 +6,7 @@ import uuid
 from src.base_creature_builder import creature_template_builder
 from src.weapons_builder import weapon_template_builder
 from src.abilities_builder import ability_template_builder
+from src.talents_builder import talent_template_builder
 from src.utils import fill_template_with_openai, generate_id, upload_new_character, get_character, put_character, get_bearer_token
 from src.base_creature_builder import CREATURE_TEMPLATE_DICT
 from src.validator import validate_creature, validate_weapon, validate_talent_or_ability
@@ -43,6 +44,7 @@ def complete_builder(
     presence=-1,
     number_of_weapons=2,
     number_of_abilities=-1,
+    number_of_talents=-1,
     bearer_token = None,
 ):
     final_creature_dict = CREATURE_TEMPLATE_DICT
@@ -111,7 +113,7 @@ def complete_builder(
     
 
     print("Building abilities template")
-    ability_template_string = ability_template_builder(creature_name, creature_type, ["Melee", "Intimidation", "Knowledge (Forbidden)"], 7, 6, 5, setting_description, number_of_abilities=number_of_abilities)
+    ability_template_string = ability_template_builder(creature_name, creature_type, str(list(generated_character_data_as_dict['masterSkills'].keys())), generated_character_data_as_dict['combatCR'], generated_character_data_as_dict['generalCR'], generated_character_data_as_dict['socialCR'], setting_description, number_of_abilities=number_of_abilities)
     print("Filling ability template with OpenAI, expect this to take about 15 seconds.")
     generated_ability_data = fill_template_with_openai(ability_template_string)
     print("Validating ability data")
@@ -144,10 +146,31 @@ def complete_builder(
             master_talents[ability["tier"]] = {"1":new_name}
         else:
             master_talents[ability["tier"]].extend({str(len(master_talents[ability["tier"]])+1): new_name})
-        final_creature_dict["characters"][0]["masterTalents"] = master_talents  
 
 
-    # TODO: Add gear generator
+    print("Building talents template")
+    talent_template_string = talent_template_builder(creature_name, creature_type, str(list(generated_character_data_as_dict['masterSkills'].keys())), generated_character_data_as_dict['combatCR'], generated_character_data_as_dict['generalCR'], generated_character_data_as_dict['socialCR'], setting_description, number_of_talents)
+    print("Filling talent template with OpenAI, expect this to take about 15 seconds.")
+    generated_talent_data = fill_template_with_openai(talent_template_string)
+    print("Validating ability data")
+    generated_talent_data_as_dict = validate_talent_or_ability(generated_talent_data)
+    final_creature_dict["customTalents"] = generated_talent_data_as_dict
+    print("Adding abilities to character")
+
+    for talent in generated_talent_data_as_dict:
+        data_talent = {"id": talent["id"], "name": talent["name"], "purchased": True, "description": talent["description"], "modifiers": [], "ranked": talent["ranked"], "ranks": talent["ranks"], "isForceTalent": False, "isConflictTalent": False, "xpCost": 0}
+        if talent["activation"]:
+            data_talent["activationType"] = "[nds character activation type] {activation_type}".format(activation_type=re.search(r"\((.+?)\)",talent["turn"]).group(0).lower())
+        data_talents["talents"].append(data_talent)
+        talents_and_abilities_list[1]["talentIds"].append(talent["id"]) # 0 is abilities, 1 is talents
+        new_name = talent['name'].replace(' ', '').replace("'", '').replace("-", "")  # Remove spaces and apostrophes and dashes
+        if talent["tier"] not in master_talents.keys():
+            master_talents[talent["tier"]] = {"1":new_name}
+        else:
+            master_talents[talent["tier"]].update({str(len(master_talents[talent["tier"]])+1): new_name})
+    final_creature_dict["characters"][0]["masterTalents"] = master_talents
+
+
 
     print("Writing character to file")
     with open("creature.json", "w") as f:
