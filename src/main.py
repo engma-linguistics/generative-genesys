@@ -108,14 +108,7 @@ def complete_builder(
                         "id": new_name,
                         "equipped": True}
 
-    abilities_list_id = uuid.uuid4()
-    talents_list_id = uuid.uuid4()
-    talents_and_abilities_list = {'listGroups': [{'id': abilities_list_id, # I think i just need this if at all for the edit of the live character?
-    'name': 'Abilities',
-    'talentIds': []},
-   {'id': talents_list_id,
-    'name': 'Talents',
-    'talentIds': []}]}
+    
 
     print("Building abilities template")
     ability_template_string = ability_template_builder(creature_name, creature_type, ["Melee", "Intimidation", "Knowledge (Forbidden)"], 7, 6, 5, setting_description, number_of_abilities=number_of_abilities)
@@ -125,9 +118,27 @@ def complete_builder(
     generated_ability_data_as_dict = validate_talent_or_ability(generated_ability_data)
     final_creature_dict["customTalents"] = generated_ability_data_as_dict
     print("Adding abilities to character")
+
+    abilities_list_id = str(uuid.uuid4())
+    talents_list_id = str(uuid.uuid4())
+    data_talents = {
+         "talents": [
+        ]
+    }
+    talents_and_abilities_list = [{'id': abilities_list_id,
+    'name': 'Abilities',
+    'talentIds': []},
+   {'id': talents_list_id,
+    'name': 'Talents',
+    'talentIds': []}]
+    
     master_talents = {}
     for ability in generated_ability_data_as_dict:
-        talents_and_abilities_list["listGroups"][0]["talentIds"].append(ability["id"])
+        data_talent = {"id": ability["id"], "name": ability["name"], "purchased": True, "description": ability["description"], "modifiers": [], "ranked": ability["ranked"], "ranks": ability["ranks"], "isForceTalent": False, "isConflictTalent": False, "xpCost": 0}
+        if ability["activation"]:
+            data_talent["activationType"] = "[nds character activation type] {activation_type}".format(activation_type=re.search(r"\((.+?)\)",ability["turn"]).group(0).lower())
+        data_talents["talents"].append(data_talent)
+        talents_and_abilities_list[0]["talentIds"].append(ability["id"]) # 0 is abilities, 1 is talents
         new_name = ability['name'].replace(' ', '').replace("'", '').replace("-", "")  # Remove spaces and apostrophes and dashes
         if ability["tier"] not in master_talents.keys():
             master_talents[ability["tier"]] = {"1":new_name}
@@ -217,7 +228,8 @@ def complete_builder(
         {"value": 0, "type": "[nds character attribute] total aember"},
     ]
     
-    # data["talents"] = {
+    data["talents"] = data_talents
+    data["talents"]["listGroups"] = talents_and_abilities_list
     #     "talents": [
     #         {
     #             "id": "9ec4d180-d59e-4a79-8625-36a31f82442b",
@@ -250,12 +262,12 @@ def complete_builder(
     #     ],
     # }
     
-    #data["listGroups"] = talents_and_abilities_list
+    
 
     # update the character!
     # TODO: Add and remove skills in data as desired
     print("Re-uploading character data to RPGSessions, overwriting existing character we just made")
-    #put_character(character_id, bearer_token, data)
+    put_character(character_id, bearer_token, data)
 
     print("Done!")
     return final_creature_dict

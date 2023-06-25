@@ -36,6 +36,7 @@ REQUIRED_ABILITY_OR_TALENT_FIELDS = [
     "tier",
     "description",
     "ranked",
+    "ranks",
 ]
 
 
