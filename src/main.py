@@ -108,10 +108,11 @@ def complete_builder(
         final_creature_dict["characters"][0]["equipmentWeapons"][weapon['id']] = {"craftsmanship": "",
                         "carried": True,
                         "id": new_name,
-                        "equipped": True}
-
+                        "equipped": True,
+                        "damageAddsBrawn": False}
+        if weapon['skill'] in ["Brawl", "Melee"]:
+            final_creature_dict["characters"][0]["equipmentWeapons"][weapon['id']]["damageAddsBrawn"] = True
     
-
     print("Building abilities template")
     ability_template_string = ability_template_builder(creature_name, creature_type, str(list(generated_character_data_as_dict['masterSkills'].keys())), generated_character_data_as_dict['combatCR'], generated_character_data_as_dict['generalCR'], generated_character_data_as_dict['socialCR'], setting_description, number_of_abilities=number_of_abilities)
     print("Filling ability template with OpenAI, expect this to take about 15 seconds.")
