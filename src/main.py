@@ -103,13 +103,13 @@ def complete_builder(
     print("Adding weapons to character")
     final_creature_dict["characters"][0]["equipmentWeapons"] = {}
     for weapon in generated_weapon_data_as_dict:
-        new_name = weapon['name'].replace(' ', '').replace("'", '')  # Remove spaces and apostrophes
+        new_name = weapon['name'].replace(' ', '').replace("'", '').replace('-','')  # Remove spaces and apostrophes and dashes
         new_name = new_name[0].lower() + new_name[1:]  # Lowercase the first letter
         final_creature_dict["characters"][0]["equipmentWeapons"][weapon['id']] = {"craftsmanship": "",
                         "carried": True,
                         "id": new_name,
                         "equipped": True,
-                        "damageAddsBrawn": False}
+                        "damageAddsBrawn": False} # TODO: This doesn't work, has to be to data object
         if weapon['skill'] in ["Brawl", "Melee"]:
             final_creature_dict["characters"][0]["equipmentWeapons"][weapon['id']]["damageAddsBrawn"] = True
     
@@ -254,37 +254,15 @@ def complete_builder(
     
     data["talents"] = data_talents
     data["talents"]["listGroups"] = talents_and_abilities_list
-    #     "talents": [
-    #         {
-    #             "id": "9ec4d180-d59e-4a79-8625-36a31f82442b",
-    #             "name": "Duelist",
-    #             "purchased": true,
-    #             "activationType": "[nds character activation type] passive",
-    #             "description": "See CRB, page 73, for more details.",
-    #             "modifiers": [],
-    #             "ranked": false,
-    #             "ranks": 0,
-    #             "isForceTalent": false,
-    #             "isConflictTalent": false,
-    #             "xpCost": 0
-    #         }
-    #     ],
-    #     "trees": [],
-    #     "listGroups": [
-    #         {
-    #             "id": "c8cd67da-0672-4267-a6df-f1c7a38135c6",
-    #             "name": "Talents",
-    #             "talentIds": [
-    #                 "8037cdb7-fc81-45e8-991a-37a86853773e"
-    #             ]
-    #         },
-    #         {
-    #             "id": "63d2598a-aa2e-4047-992d-4b6620b3639b",
-    #             "name": "Abilities",
-    #             "talentIds": []
-    #         }
-    #     ],
-    # }
+    for weapon in data["weapons"]:
+        weapon_name = weapon["name"]
+        for original_weapon in generated_weapon_data_as_dict:
+            if original_weapon['name'] == weapon_name:
+                if ("Brawl" in original_weapon["skill"]) or ("Melee" in original_weapon["skill"]):
+                    weapon["damageAddsBrawn"] = True # TODO: test this im tired when coding it
+                else:
+                    weapon["damageAddsBrawn"] = False
+
     
     
 
