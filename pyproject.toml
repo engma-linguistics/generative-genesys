@@ -10,6 +10,8 @@ packages = [{include = "rpgsessions_gpt4"}]
 python = "^3.8.1"
 openai = "^0.27.7"
 langchain = "^0.0.177"
+flask = "^2.3.2"
+flask-cors = "^4.0.0"
 
 
 [tool.poetry.group.dev.dependencies]

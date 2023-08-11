@@ -10,9 +10,10 @@ RPGSESSIONS_PASSWORD = os.getenv("RPGSESSIONS_PASSWORD")
 
 
 ALL_ADVERSARIES = []
+print(os.getcwd())
 # read adversaries.json into a dict
-for each_file in os.listdir("data/adversaries"):
-    with open("data/adversaries/" + each_file) as f:
+for each_file in os.listdir("backend/data/adversaries"):
+    with open("backend/data/adversaries/" + each_file) as f:
         source = re.search(r"adversaries/(.+)\.json", f.name).group(1)
         if source in ["genesys-misc", "genesys-creature-catalogue"]:
             continue
